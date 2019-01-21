@@ -29,6 +29,15 @@ Since we'll be using PostgreSQL eventually you'll need
 ```
 pip install Django psycopg2
 ```
+Now install PostgreSQL 10.6 and in the command line type
+```
+psql -U postgres
+\c cribds
+```
+Now in your project folder type
+```
+py manage.py createsuperuser
+```
 And finally
 ```
 python manage.py runserver
