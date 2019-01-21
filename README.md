@@ -24,6 +24,13 @@ workon name_of_environment
 
 ```
 pip install Django
+```
+Since we'll be using PostgreSQL eventually you'll need
+```
+pip install Django psycopg2
+```
+And finally
+```
 python manage.py runserver
 ```
 
