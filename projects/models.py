@@ -13,6 +13,9 @@ class ProjectType(models.Model):
     def __str__(self):
         """String for representing a project type object"""
         return self.name
+    
+    class Meta:
+        db_table = "project_types"
 
 class Project(models.Model):
     """Model representing a project"""
@@ -32,6 +35,9 @@ class Project(models.Model):
     def get_absolute_url(self):
         """Returns the url to access the details of this project"""
         return reverse('project-detail', args=[str(self.id)])
+    
+    class Meta:
+        db_table = "projects"
 
 class Refugee(models.Model):
     id = models.AutoField(primary_key=True)
@@ -46,6 +52,7 @@ class Refugee(models.Model):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        db_table = "refugees"
 
     def get_absolute_url(self):
         """Returns the url to access the details of this refugee"""
@@ -60,6 +67,9 @@ class Camp(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        db_table = "camps"
 
 class Town(models.Model):
     county = models.CharField(max_length=100)
@@ -68,3 +78,6 @@ class Town(models.Model):
 
     def __str__(self):
         return self.town
+    
+    class Meta:
+        db_table = "towns"
