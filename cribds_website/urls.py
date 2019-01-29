@@ -19,11 +19,12 @@ from django.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from projects import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
-    path('info/', include('info.urls')),
+    path('info/', views.info, name='index'),
     path('', RedirectView.as_view(url='/info/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #This addition during development ONLY
 
