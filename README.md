@@ -1,5 +1,5 @@
 # cribds-website
-
+*NOTE*: Replace "py" with whatever command runs python 3
 
 To install and run
 ```
@@ -37,6 +37,8 @@ psql -U postgres
 Now in your project folder type
 ```
 py manage.py createsuperuser
+py manage.py makemigrations
+py manage.py migrate
 ```
 And finally
 ```
