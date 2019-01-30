@@ -32,7 +32,7 @@ pip install Django psycopg2
 Now install PostgreSQL 10.6 and in the command line type
 ```
 psql -U postgres
-\c cribds
+\c cribds (Maybe not, if it doesn't work skip this and let me know)
 ```
 Now in your project folder type
 ```
