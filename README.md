@@ -6,6 +6,7 @@ To install and run
 git clone https://github.com/evansmoot/cribds-website.git
 ```
 -install python 3.7.2
+
 -install pip
 
 ---
