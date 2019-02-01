@@ -34,17 +34,26 @@ pip install Django psycopg2
 Now install PostgreSQL 10.6 and in the command line type
 ```
 psql -U postgres
-\c cribds (Maybe not, if it doesn't work skip this and let me know)
+```
+If you get a "authentication failed for user: postgres" then go to settings.py in the cribds_website folder and change the password line to whatever you made your postgres database password. It is currently "ADmin"
+
+If you get a "cribds" database does not exist in the command line type
+```
+createdb cribds
+```
+Or open psql (the application on your computer) and (after going through the login process that might automatically appear) type
+```
+create database cribds
 ```
 Now in your project folder type
 ```
-py manage.py createsuperuser
 py manage.py makemigrations
-py manage.py migrate
+py manage.py migrat
+py manage.py createsuperuser
 ```
 And finally
 ```
-python manage.py runserver
+py manage.py runserver
 ```
 
 The project should be running on the ip address specified in your console
