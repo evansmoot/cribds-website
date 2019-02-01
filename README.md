@@ -48,7 +48,7 @@ create database cribds
 Now in your project folder type
 ```
 py manage.py makemigrations
-py manage.py migrat
+py manage.py migrate
 py manage.py createsuperuser
 ```
 And finally
