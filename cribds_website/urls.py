@@ -20,11 +20,24 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from projects import views
+from projects.api import viewsets
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'users', viewsets.UserViewSet)
+router.register(r'groups', viewsets.GroupViewSet)
+router.register(r'project_type', viewsets.ProjectTypeViewSet)
+router.register(r'projects', viewsets.ProjectViewSet)
+router.register(r'refugees', viewsets.RefugeeViewSet)
+router.register(r'camps', viewsets.CampViewSet)
+router.register(r'towns', viewsets.TownViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
     path('info/', views.info, name='index'),
     path('', RedirectView.as_view(url='/info/', permanent=True)),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #This addition during development ONLY
 
