@@ -51,6 +51,11 @@ py manage.py makemigrations
 py manage.py migrate
 py manage.py createsuperuser
 ```
+You'll need other packages as well:
+```
+pip install djangorestframework
+pip install requests
+```
 And finally
 ```
 py manage.py runserver
