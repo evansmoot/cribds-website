@@ -13,22 +13,19 @@
 </head>
 <body>
     <div class="site-wrapper">
-
-        <div class="site-wrapper-inner">
-    
           <div class="cover-container">
-    
-            <div class="masthead clearfix">
-              <div class="inner">
-                <h3 class="masthead-brand">The Southern Cameroons/Ambazonia Refugee Project</h3>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <h3 class="navbar-brand">The Southern Cameroons/Ambazonia Refugee Project</h3>
+                </div>
                 {% block navbar %}
                 {% endblock %}
               </div>
-            </div>
+            </nav>
             {% block content %}
             {% endblock %}
           </div>
-        </div>
     </div>
 
   <!-- Bootstrap core JavaScript

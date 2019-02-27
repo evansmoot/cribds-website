@@ -1,20 +1,84 @@
 {% extends "base_generic.html" %}
 
 {% block navbar %}
-  <nav class="nav nav-masthead">
+<nav class="nav nav-masthead">
     <a class="nav-link" href="{% url 'index' %}">Home</a>
     <a class="nav-link active" href="{% url 'projects' %}">Projects</a>
   </nav>
 {% endblock %}
 
 {% block content %}
-  <h1>Projects Seeking Donations</h1>
-  <p>Welcome to CRIBDS, a website developed by <em>us</em>!</p>
-  <h2>Projects you can donate to:</h2>
-  <ul>
-    <li><strong>P1:</strong> {{ var1 }}</li>
-    <li><strong>P2:</strong> {{ var2 }}</li>
-    <li><strong>P3:</strong> {{ var3 }}</li>
-    <li><strong>P4:</strong> {{ var4 }}</li>
-  </ul>
+  <div class="inner cover">
+
+      <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8">
+              <form class="card card-sm">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col-auto">
+                          <i class="fas fa-search h4 text-body"></i>
+                      </div>
+                      <!--end of col-->
+                      <div class="col">
+                          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search projects">
+                      </div>
+                      <!--end of col-->
+                      <div class="col-auto">
+                          <button class="btn btn-lg btn-secondary" type="submit">Search</button>
+                      </div>
+                      <!--end of col-->
+                  </div>
+              </form>
+          </div>
+          <!--end of col-->
+      </div>
+
+      <br>
+    
+  <div class="container">    
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">BLACK FRIDAY DEAL</div>
+            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+          </div>
+        </div>
+        <div class="col-sm-4"> 
+          <div class="panel panel-danger">
+            <div class="panel-heading">BLACK FRIDAY DEAL</div>
+            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+          </div>
+        </div>
+        <div class="col-sm-4"> 
+          <div class="panel panel-success">
+            <div class="panel-heading">BLACK FRIDAY DEAL</div>
+            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">BLACK FRIDAY DEAL</div>
+              <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+          </div>
+          <div class="col-sm-4"> 
+            <div class="panel panel-danger">
+              <div class="panel-heading">BLACK FRIDAY DEAL</div>
+              <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+          </div>
+          <div class="col-sm-4"> 
+            <div class="panel panel-success">
+              <div class="panel-heading">BLACK FRIDAY DEAL</div>
+              <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+          </div>
+      </div>
+    </div><br>
+  </div>
 {% endblock %}

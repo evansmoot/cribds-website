@@ -15,6 +15,7 @@ class ProjectType(models.Model):
         return self.name
     
     class Meta:
+        ordering = ['name']
         db_table = "project_types"
 
 class Project(models.Model):
@@ -37,6 +38,7 @@ class Project(models.Model):
         return reverse('project-detail', args=[str(self.id)])
     
     class Meta:
+        ordering = ['name']
         db_table = "projects"
 
 class Refugee(models.Model):
@@ -69,6 +71,7 @@ class Camp(models.Model):
         return self.name
     
     class Meta:
+        ordering = ['name']
         db_table = "camps"
 
 class Town(models.Model):
@@ -80,4 +83,5 @@ class Town(models.Model):
         return self.town
     
     class Meta:
+        ordering = ['town']
         db_table = "towns"
