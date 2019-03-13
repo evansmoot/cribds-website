@@ -35,6 +35,7 @@ router.register(r'towns', viewsets.TownViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
+    # path('projects/<int:id>', include('projects.urls')),
     path('info/', views.info, name='index'),
     path('', RedirectView.as_view(url='/info/', permanent=True)),
     path('api/', include(router.urls)),

@@ -12,14 +12,14 @@
 
       <div class="row justify-content-center">
           <div class="col-12 col-md-10 col-lg-8">
-              <form class="card card-sm">
+              <form class="card card-sm" method="GET" action="/projects/">
                   <div class="row no-gutters align-items-center">
                       <div class="col-auto">
                           <i class="fas fa-search h4 text-body"></i>
                       </div>
                       <!--end of col-->
                       <div class="col">
-                          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search projects">
+                          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search projects" name="q">
                       </div>
                       <!--end of col-->
                       <div class="col-auto">
@@ -36,48 +36,15 @@
     
   <div class="container">    
       <div class="row">
-        <div class="col-sm-4">
-          <div class="panel panel-primary">
-            <div class="panel-heading">BLACK FRIDAY DEAL</div>
-            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-          </div>
-        </div>
-        <div class="col-sm-4"> 
-          <div class="panel panel-danger">
-            <div class="panel-heading">BLACK FRIDAY DEAL</div>
-            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-          </div>
-        </div>
-        <div class="col-sm-4"> 
-          <div class="panel panel-success">
-            <div class="panel-heading">BLACK FRIDAY DEAL</div>
-            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">BLACK FRIDAY DEAL</div>
-              <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-              <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+        {% for project in data %}
+          <div class="col-sm-4">
+            <div class="project-card">
+              <div class="panel-body"><a href="/projects/{{ project.id }}"><img src="http://www.cameroonintelligencereport.com/wp-content/uploads/2017/12/Southern-Cameroons-refugees.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+              <div class="panel-heading"><b>{{ project.name }}</b></div>
+              <div class="panel-footer">{{ project.description }}</div>
             </div>
           </div>
-          <div class="col-sm-4"> 
-            <div class="panel panel-danger">
-              <div class="panel-heading">BLACK FRIDAY DEAL</div>
-              <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-              <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-          </div>
-          <div class="col-sm-4"> 
-            <div class="panel panel-success">
-              <div class="panel-heading">BLACK FRIDAY DEAL</div>
-              <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-              <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-          </div>
+        {% endfor %}
       </div>
     </div><br>
   </div>

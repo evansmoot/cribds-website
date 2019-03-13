@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from projects.models import ProjectType, Project, Refugee, Camp, Town
 from django.contrib.auth.models import User, Group
 from projects.api.serializers import ProjectTypeSerializer, ProjectSerializer, RefugeeSerializer, \
@@ -26,6 +26,8 @@ class ProjectTypeViewSet(viewsets.ModelViewSet):
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name', 'description', 'refugee__first_name', 'refugee__last_name', 'project_type__name')
 
 class RefugeeViewSet(viewsets.ModelViewSet):
     queryset = Refugee.objects.all()
