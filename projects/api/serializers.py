@@ -17,10 +17,14 @@ class ProjectTypeSerializer(serializers.HyperlinkedModelSerializer):
         model = ProjectType
         fields = ('id', 'name')
 
-class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
+    refugee_first_name = serializers.CharField(source='refugee.first_name')
+    refugee_last_name = serializers.CharField(source='refugee.last_name')
+    refugee_camp = serializers.CharField(source='refugee.camp.name')
+    refugee_town = serializers.CharField(source='refugee.hometown.town')
     class Meta:
         model = Project
-        fields = ('id', 'name', 'refugee', 'description', 'funds', 'submission_date', 'status', 'project_type')
+        fields = ('id', 'name', 'refugee', 'refugee_first_name', 'refugee_last_name', 'refugee_camp', 'refugee_town', 'description', 'funds', 'submission_date', 'status', 'project_type')
 
 class RefugeeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

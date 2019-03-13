@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block navbar %}
+<nav class="nav nav-masthead">
+    <a class="nav-link" href="{% url 'index' %}">Home</a>
+    <a class="nav-link active" href="{% url 'projects' %}">Projects</a>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{ project.name }}
+    </h1>
+    
+    <!-- Portfolio Item Row -->
+    <div class="row">
+    
+        <div class="col-md-8">
+        <img class="img-fluid" src="https://c8.alamy.com/comp/FA84J4/farmers-work-outside-the-family-chicken-coop-in-tengrla-village-burkina-FA84J4.jpg">
+        </div>
+    
+        <div class="col-md-4">
+        <h3 class="my-3">{{ project.refugee_first_name }} {{ project.refugee_last_name }}'s Project</h3>
+        <div class="detail-box">
+            <p>Looking to raise ${{ project.funds }}</p>
+            <p>Refugee Location: {{ project.refugee_camp }}</p>
+            <p>Refugee Hometown: {{ project.refugee_town }}</p>
+            <p>Created on {{ project.submission_date }}</p>
+            <h3 class="my-4">About the Project</h3>
+            <p>{{ project.description }}</p>
+            <button type="button" class="btn btn-success btn-lg">Donate Now</button>
+        </div>
+        </div>
+    
+    </div>
+
+    
+{% endblock %}
