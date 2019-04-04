@@ -33,12 +33,12 @@ router.register(r'camps', viewsets.CampViewSet)
 router.register(r'towns', viewsets.TownViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
     # path('projects/<int:id>', include('projects.urls')),
     path('info/', views.info, name='index'),
     path('', RedirectView.as_view(url='/info/', permanent=True)),
-    path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    # path('api/', include(router.urls)),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #This addition during development ONLY
 
