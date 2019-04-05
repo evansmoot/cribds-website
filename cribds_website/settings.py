@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'projects.apps.ProjectsConfig',
-    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -79,14 +78,6 @@ WSGI_APPLICATION = 'cribds_website.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cribds',
-        'USER': 'postgres',
-        'PASSWORD': 'ADmin',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
 }
 
 

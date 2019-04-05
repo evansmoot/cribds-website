@@ -1,6 +1,4 @@
 from django.shortcuts import render
-import requests
-import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 from firebase_admin import db
