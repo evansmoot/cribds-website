@@ -17,7 +17,7 @@ def projects(request):
     query = request.GET.get('q')
     
     print(query)
-    if (query is not None):
+    if (query is not None and query.strip() != ""):
         camps_ref = db.collection('camps').where('name', '==', query).get()
         camp_list = { camp.id for camp in camps_ref }
 
@@ -25,6 +25,17 @@ def projects(request):
         town_list = { town.id for town in towns_ref }
 
         refugee_list = []
+        name_query = query.split(" ")
+        if(len(name_query) == 2):
+            refugee_first_name_ref = db.collection('refugees').where('first_name', '==', name_query[0]).get()
+            for refugee in refugee_first_name_ref:
+                refugee_list.append(refugee.id)
+
+            refugee_last_name_ref = db.collection('refugees').where('last_name', '==', name_query[1]).get()
+            for refugee in refugee_last_name_ref:
+                if refugee.id not in refugee_list:
+                    refugee_list.append(refugee.id)
+
         refugee_first_name_ref = db.collection('refugees').where('first_name', '==', query).get()
         for refugee in refugee_first_name_ref:
                 refugee_list.append(refugee.id)
@@ -85,8 +96,6 @@ def projects_detail(request, id):
     refugee_ref = db.collection('refugees').document(project_ref["creator"]).get().to_dict()
     camps_ref = db.collection('camps').document(refugee_ref["camp"]).get().to_dict()
     town_ref = db.collection('towns').document(refugee_ref["hometown"]).get().to_dict()
-
-    # project_ref["submission_date"] = project_ref["submission_date"].toDate()
     context = {
         'project': project_ref,
         'refugee': refugee_ref,
