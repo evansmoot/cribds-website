@@ -22,10 +22,10 @@
 - Project can be downloaded as a zip and extracted in the desired directory or with git (https://git-scm.com/)
 ### Build Instructions
 - User will need credentials to access firebase:
-  - Go to (https://console.firebase.google.com/) and log in with the credentials given to you by the developers. 
-  - Navigate to the Service Accounts tab in the project's settings page
-  - Click the Generate New Private Key button at the bottom of the Firebase Admin SDK section of the Service Accounts tab.
-  - A JSON file containing the credentials needed to access the database will be downloaded. Add this to the project directory at the path cribds_website/projects/ (in the same folder as apps.py, urls.py, views.py, etc...)
+ - Go to (https://console.firebase.google.com/) and log in with the credentials given to you by the developers. 
+ - Navigate to the Service Accounts tab in the project's settings page
+ - Click the Generate New Private Key button at the bottom of the Firebase Admin SDK section of the Service Accounts tab.
+ - A JSON file containing the credentials needed to access the database will be downloaded. Add this to the project directory at the path cribds_website/projects/ (in the same folder as apps.py, urls.py, views.py, etc...)
 **Warning: Use extra caution when handling service account credentials in your code. Do not commit them to a public repository, deploy them in a client app, or expose them in any way that could compromise the security of your Firebase project.**
 ### Run Instructions
 - Navigate to the root directory of the project in your terminal (in the same folder as manage.py) and type ```py manage.py runserver```
