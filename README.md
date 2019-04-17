@@ -10,7 +10,7 @@
 - Project search by name can now work for first name or last name
 ### Known Bugs
 - Cannot search projects by partial string matching (so entire title must be entered for example)
- - Consider using Algolia or ElasticSearch to allow for full-text searching of the Firestore database moving forward
+  - Consider using Algolia or ElasticSearch to allow for full-text searching of the Firestore database moving forward
 
 ## Website Install Information:
 ### Prerequisites:
