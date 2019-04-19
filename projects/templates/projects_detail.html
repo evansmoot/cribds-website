@@ -17,19 +17,20 @@
     <div class="row">
     
         <div class="col-md-8">
-        <img class="img-fluid" src="https://c8.alamy.com/comp/FA84J4/farmers-work-outside-the-family-chicken-coop-in-tengrla-village-burkina-FA84J4.jpg">
+        <img class="img-fluid" src="{{ img.img }}">
         </div>
     
         <div class="col-md-4">
         <h3 class="my-3">{{ refugee.first_name|title }} {{ refugee.last_name|title }}'s Project</h3>
         <div class="detail-box">
-            <p>Looking to raise ${{ project.funds_needed }}</p>
+            <p>Looking to raise ${{ project.funds_needed|floatformat:2 }}</p>
             <p>Refugee Location: {{ camp.name|title }}</p>
             <p>Refugee Hometown: {{ town.town|title }}</p>
             <p>Created on {{ project.submission_date|date:"F j, o" }}</p>
             <h3 class="my-4">About the Project</h3>
             <p>{{ project.description }}</p>
-            <button type="button" class="btn btn-success btn-lg">Donate Now</button>
+            <br>
+            <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif">
         </div>
         </div>
     

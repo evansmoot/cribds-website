@@ -39,7 +39,7 @@
         {% for project in data %}
           <div class="col-sm-4">
             <div class="project-card">
-              <div class="panel-body"><a href="/projects/{{ project.id }}"><img src="http://www.cameroonintelligencereport.com/wp-content/uploads/2017/12/Southern-Cameroons-refugees.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+              <div class="panel-body"><a href="/projects/{{ project.id }}"><img src="{{ project.img }}" class="img-responsive" style="width:100%; height:200px;" alt="Image"></a></div>
               <div class="panel-heading"><b>{{ project.title|title }}</b></div>
               <div class="panel-footer">{{ project.description }}</div>
             </div>

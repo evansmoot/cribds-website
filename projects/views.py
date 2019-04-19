@@ -1,14 +1,18 @@
 from django.shortcuts import render
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore, storage
 from firebase_admin import db
 import os
+import datetime
 dirname = os.path.dirname(__file__)
-filename = os.path.join(dirname, './scarp-8329-firebase-adminsdk-p2gz4-5c17831320.json')
+filename = os.path.join(dirname, './scarp-8329-firebase-adminsdk-p2gz4-0b4b10a761.json')
 
 cred = credentials.Certificate(filename)
-default_app = firebase_admin.initialize_app(cred)
+default_app = firebase_admin.initialize_app(cred, {
+    'storageBucket': 'scarp-8329.appspot.com'
+})
 
+bucket = storage.bucket()
 db = firestore.client()
 
 # Create your views here.
@@ -16,7 +20,7 @@ def projects(request):
     """View function for projects page of site"""
     query = request.GET.get('q')
     
-    print(query)
+    # print(query)
     if (query is not None and query.strip() != ""):
         camps_ref = db.collection('camps').where('name', '==', query).get()
         camp_list = { camp.id for camp in camps_ref }
@@ -60,17 +64,17 @@ def projects(request):
         project_type_ref = db.collection('project_types').where('name', '==', query).get()
         project_type_list = { project_type.id for project_type in project_type_ref }
         for project_type_id in project_type_list:
-            project_type_ref = db.collection('projects').where('project_type', '==', project_type_id).get()
+            project_type_ref = db.collection('projects').where('project_type', '==', project_type_id).where('status', '==', 'approved').get()
             for project in project_type_ref:
                 project_list.append(project.id)
 
         for refugee_id in refugee_list:
-            project_ref = db.collection('projects').where('creator', '==', refugee_id).get()
+            project_ref = db.collection('projects').where('creator', '==', refugee_id).where('status', '==', 'approved').get()
             for project in project_ref:
                 if project.id not in project_list:
                     project_list.append(project.id)
 
-        project_title_ref = db.collection('projects').where('title', '==', query).get()
+        project_title_ref = db.collection('projects').where('title', '==', query).where('status', '==', 'approved').get()
         for project in project_title_ref:
             if project.id not in project_list:
                 project_list.append(project.id)
@@ -80,12 +84,21 @@ def projects(request):
             ref = db.collection('projects').document(project).get()
             page_content[project] = ref.to_dict()
     else:
-        ref = db.collection('projects').get()
+        ref = db.collection('projects').where('status', '==', 'approved').get()
         page_content = { project.id: project.to_dict() for project in ref }
+
+    #For fetching images
+    # blob = bucket.blob("project_images/test_photo1.jpg")
+    # img = blob.generate_signed_url(datetime.timedelta(seconds=300), method='GET')
 
     data_list = []
     for key, value in page_content.items():
         value["id"] = key
+        blob = bucket.blob(f'project_images/{key}.jpg')
+        if (not blob.exists()):
+            blob = bucket.blob('project_images/default.jpg')
+        img = blob.generate_signed_url(datetime.timedelta(seconds=300), method='GET')
+        value["img"] = img
         data_list.append(value)
 
     return render(request, 'projects.html', {'data' : data_list})
@@ -96,11 +109,18 @@ def projects_detail(request, id):
     refugee_ref = db.collection('refugees').document(project_ref["creator"]).get().to_dict()
     camps_ref = db.collection('camps').document(refugee_ref["camp"]).get().to_dict()
     town_ref = db.collection('towns').document(refugee_ref["hometown"]).get().to_dict()
+
+    blob = bucket.blob(f'project_images/{id}.jpg')
+    if (not blob.exists()):
+        blob = bucket.blob('project_images/default.jpg')
+    img = blob.generate_signed_url(datetime.timedelta(seconds=300), method='GET')
+    img_dict = {"img": img}
     context = {
         'project': project_ref,
         'refugee': refugee_ref,
         'camp': camps_ref,
-        'town': town_ref
+        'town': town_ref,
+        'img': img_dict
     }
     return render(request, 'projects_detail.html', context)
 
