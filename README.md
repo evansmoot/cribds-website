@@ -27,6 +27,7 @@
   - Click the Generate New Private Key button at the bottom of the Firebase Admin SDK section of the Service Accounts tab.
   - A JSON file containing the credentials needed to access the database will be downloaded. Add this to the project directory at the path cribds_website/projects/ (in the same folder as apps.py, urls.py, views.py, etc...)
   - Change the ```filename = os.path.join(dirname, './scarp-8329-firebase-adminsdk-p2gz4-0b4b10a761.json')``` line to have the same file name as the json file you just downloaded
+  
 **Warning: Use extra caution when handling service account credentials in your code. Do not commit them to a public repository, deploy them in a client app, or expose them in any way that could compromise the security of your Firebase project.**
 ### Run Instructions
 - Navigate to the root directory of the project in your terminal (in the same folder as manage.py) and type ```py manage.py runserver```
